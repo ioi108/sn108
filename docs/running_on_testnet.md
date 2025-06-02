@@ -31,7 +31,7 @@ git clone https://github.com/opentensor/bittensor-subnet-template.git
 Next, `cd` into bittensor-subnet-template repo directory:
 
 ```bash
-cd bittensor-subnet-template # Enter the 
+cd bittensor-subnet-ioi # Enter the 
 ```
 
 Install the bittensor-subnet-template package:

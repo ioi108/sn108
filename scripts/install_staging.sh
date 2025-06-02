@@ -69,7 +69,7 @@ setup_environment() {
 
     cd ../bittensor-subnet-template
 
-    # Install the bittensor-subnet-template python package
+    # Install the bittensor-subnet-ioi python package
     python -m pip install -e .
 
     # Create and set up wallets
@@ -89,7 +89,7 @@ setup_environment() {
 setup_environment 
 
 ## Setup localnet
-# assumes we are in the bittensor-subnet-template/ directory
+# assumes we are in the bittensor-subnet-ioi/ directory
 # Initialize your local subtensor chain in development mode. This command will set up and run a local subtensor network.
 cd ../subtensor
 

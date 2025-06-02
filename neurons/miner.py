@@ -1,7 +1,7 @@
 # The MIT License (MIT)
 # Copyright © 2023 Yuma Rao
-# TODO(developer): Set your name
-# Copyright © 2023 <your name>
+# TODO(developer): IOI
+# Copyright © 2023 <IOI>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
 # documentation files (the “Software”), to deal in the Software without restriction, including without limitation
@@ -21,12 +21,10 @@ import time
 import typing
 import bittensor as bt
 
-# Bittensor Miner Template:
-import template
+import ioi
 
 # import base miner class which takes care of most of the boilerplate
-from template.base.miner import BaseMinerNeuron
-
+from ioi.base.miner import BaseMinerNeuron
 
 class Miner(BaseMinerNeuron):
     """
@@ -43,8 +41,8 @@ class Miner(BaseMinerNeuron):
         # TODO(developer): Anything specific to your use case you can do here
 
     async def forward(
-        self, synapse: template.protocol.Dummy
-    ) -> template.protocol.Dummy:
+        self, synapse: ioi.protocol.Dummy
+    ) -> ioi.protocol.Dummy:
         """
         Processes the incoming 'Dummy' synapse by performing a predefined operation on the input data.
         This method should be replaced with actual logic relevant to the miner's purpose.
@@ -59,11 +57,13 @@ class Miner(BaseMinerNeuron):
         the miner's intended operation. This method demonstrates a basic transformation of input data.
         """
         # TODO(developer): Replace with actual implementation logic.
-        synapse.dummy_output = synapse.dummy_input * 2
+        # synapse.dummy_output = synapse.dummy_input * 2
+        synapse.dummy_output = self.uid*2 if self.uid in synapse.dummy_input else 0
+
         return synapse
 
     async def blacklist(
-        self, synapse: template.protocol.Dummy
+        self, synapse: ioi.protocol.Dummy
     ) -> typing.Tuple[bool, str]:
         """
         Determines whether an incoming request should be blacklisted and thus ignored. Your implementation should
@@ -126,7 +126,7 @@ class Miner(BaseMinerNeuron):
         )
         return False, "Hotkey recognized!"
 
-    async def priority(self, synapse: template.protocol.Dummy) -> float:
+    async def priority(self, synapse: ioi.protocol.Dummy) -> float:
         """
         The priority function determines the order in which requests are handled. More valuable or higher-priority
         requests are processed before others. You should design your own priority mechanism with care.

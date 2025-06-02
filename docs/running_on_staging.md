@@ -103,7 +103,7 @@ git clone https://github.com/opentensor/bittensor-subnet-template.git
 Navigate to the cloned repository:
 
 ```bash
-cd bittensor-subnet-template
+cd bittensor-subnet-ioi
 ```
 
 Install the bittensor-subnet-template Python package:

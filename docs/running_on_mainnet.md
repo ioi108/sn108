@@ -37,13 +37,13 @@ git clone https://github.com/opentensor/bittensor-subnet-template.git
 Next, `cd` into `bittensor-subnet-template` repo directory:
 
 ```bash
-cd bittensor-subnet-template
+cd bittensor-subnet-ioi
 ```
 
 Install the Bittensor subnet template package:
 
 ```bash
-python -m pip install -e . # Install your subnet template package
+python -m pip install -e . # Install your subnet ioi package
 ```
 
 ## 2. Create wallets 
