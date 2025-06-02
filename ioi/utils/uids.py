@@ -16,6 +16,7 @@ def check_uid_availability(
         bool: True if uid is available, False otherwise
     """
     # Filter non serving axons.
+    bt.logging.info(f"[axons uid: {uid}, responses: {metagraph.axons[uid].is_serving}")
     if not metagraph.axons[uid].is_serving:
         return False
     # Filter validator permit > 1024 stake.
