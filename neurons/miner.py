@@ -60,6 +60,10 @@ class Miner(BaseMinerNeuron):
         # synapse.dummy_output = synapse.dummy_input * 2
         synapse.dummy_output = self.uid*2 if self.uid in synapse.dummy_input else 0
 
+        bt.logging.trace(
+            f"Miner forward uid:{self.uid}, uids: {synapse.dummy_input}, responses: {synapse.dummy_output}"
+        )
+
         return synapse
 
     async def blacklist(
