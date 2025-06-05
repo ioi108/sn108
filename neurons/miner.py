@@ -56,9 +56,10 @@ class Miner(BaseMinerNeuron):
         The 'forward' function is a placeholder and should be overridden with logic that is appropriate for
         the miner's intended operation. This method demonstrates a basic transformation of input data.
         """
-        print(f"=======> Forward called: uid = {self.uid}, synapse = {synapse}")
+        caller_uid = synapse.dendrite.hotkey
+        print(f"=======> Forward called: uid = {self.uid}, synapse = {synapse}, caller_uid={caller_uid}")
         bt.logging.trace(
-            f"Miner forward uid:{self.uid}, synapse: {synapse}"
+            f"Miner forward uid:{self.uid}, synapse: {synapse}, caller_uid={caller_uid}"
         )
 
         # TODO(developer): Replace with actual implementation logic.
