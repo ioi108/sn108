@@ -42,6 +42,10 @@ def reward(query: int, response: int, uids: List[int],) -> float:
     # return 1.0 if response == query * 2 else 0
     return 1.0 if response/2 in uids else 0
 
+def random_weight_map(uids):
+    values = np.random.rand(len(uids))       # 生成 [0, 1) 之间的随机数
+    values /= values.sum()                   # 归一化，使总和为 1
+    return dict(zip(uids, values))           # 构建 map
 
 def get_rewards(
     self,
@@ -61,4 +65,12 @@ def get_rewards(
     """
     # Get all the reward results by iteratively calling your reward() function.
 
-    return np.array([reward(query, response, uids) for response in responses])
+    # return np.array([reward(query, response, uids) for response in responses])
+
+    result = random_weight_map(uids)
+    valid_pairs = []
+    for response in responses:
+        target_uid = int(response / 2)
+        valid_pairs.append(round(result[target_uid], 2)) if target_uid in uids else valid_pairs.append(0)
+
+    return valid_pairs
