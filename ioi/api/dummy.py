@@ -19,7 +19,7 @@
 
 import bittensor as bt
 from typing import List, Optional, Union, Any, Dict
-from ioi.protocol import Dummy
+from ioi.protocol import Clever
 from bittensor.subnets import SubnetsAPI
 
 
@@ -29,8 +29,8 @@ class DummyAPI(SubnetsAPI):
         self.netuid = 33
         self.name = "dummy"
 
-    def prepare_synapse(self, dummy_input: int) -> Dummy:
-        synapse.dummy_input = dummy_input
+    def prepare_synapse(self, input: int) -> Clever:
+        synapse.input = input
         return synapse
 
     def process_responses(
@@ -40,5 +40,5 @@ class DummyAPI(SubnetsAPI):
         for response in responses:
             if response.dendrite.status_code != 200:
                 continue
-            return outputs.append(response.dummy_output)
+            return outputs.append(response.output)
         return outputs

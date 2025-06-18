@@ -24,7 +24,7 @@ import torch
 
 from neurons.validator import Validator
 from ioi.base.validator import BaseValidatorNeuron
-from ioi.protocol import Dummy
+from ioi.protocol import Clever
 from ioi.utils.uids import get_random_uids
 from ioi.validator.reward import get_rewards
 
@@ -59,7 +59,7 @@ class TemplateValidatorNeuronTestCase(unittest.TestCase):
         # TODO: Test that the forward function returns the correct value
         pass
 
-    def test_dummy_responses(self):
+    def test_responses(self):
         # TODO: Test that the dummy responses are correctly constructed
 
         responses = self.neuron.dendrite.query(
@@ -68,7 +68,7 @@ class TemplateValidatorNeuronTestCase(unittest.TestCase):
                 self.neuron.metagraph.axons[uid] for uid in self.miner_uids
             ],
             # Construct a dummy query.
-            synapse=Dummy(dummy_input=self.neuron.step),
+            synapse=Clever(input=self.neuron.step),
             # All responses have the deserialize function called on them before returning.
             deserialize=True,
         )
@@ -82,7 +82,7 @@ class TemplateValidatorNeuronTestCase(unittest.TestCase):
             # Send the query to miners in the network.
             axons=[self.metagraph.axons[uid] for uid in self.miner_uids],
             # Construct a dummy query.
-            synapse=Dummy(dummy_input=self.neuron.step),
+            synapse=Clever(input=self.neuron.step),
             # All responses have the deserialize function called on them before returning.
             deserialize=True,
         )
@@ -98,7 +98,7 @@ class TemplateValidatorNeuronTestCase(unittest.TestCase):
             # Send the query to miners in the network.
             axons=[self.metagraph.axons[uid] for uid in self.miner_uids],
             # Construct a dummy query.
-            synapse=Dummy(dummy_input=self.neuron.step),
+            synapse=Clever(input=self.neuron.step),
             # All responses have the deserialize function called on them before returning.
             deserialize=True,
         )
