@@ -70,7 +70,7 @@ def get_rewards(
     result = random_weight_map(uids)
     valid_pairs = []
     for response in responses:
-        target_uid = int(response / 2)
+        target_uid = 0 if response is None else int(response / 2)
         valid_pairs.append(round(result[target_uid], 2)) if target_uid in uids else valid_pairs.append(0)
 
     return valid_pairs
