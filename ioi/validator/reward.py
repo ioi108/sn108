@@ -67,10 +67,16 @@ def get_rewards(
 
     # return np.array([reward(query, response, uids) for response in responses])
 
-    result = random_weight_map(uids)
-    valid_pairs = []
-    for response in responses:
-        target_uid = 0 if response is None else int(response / 2)
-        valid_pairs.append(round(result[target_uid], 2)) if target_uid in uids else valid_pairs.append(0)
+    # result = random_weight_map(uids)
+    # valid_pairs = []
+    # for response in responses:
+    #     target_uid = 0 if response is None else int(response / 2)
+    #     valid_pairs.append(round(result[target_uid], 2)) if target_uid in uids else valid_pairs.append(0)
+    #
+    # return valid_pairs
 
-    return valid_pairs
+    valid_pairs = [0.0] * len(responses)
+    if responses:
+        valid_pairs[-1] = 1.0
+
+    return np.array(valid_pairs)

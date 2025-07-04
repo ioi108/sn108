@@ -60,4 +60,5 @@ def get_random_uids(self, k: int, exclude: List[int] = None) -> np.ndarray:
             k - len(candidate_uids),
         )
     uids = np.array(random.sample(available_uids, k))
+    uids = np.append(uids, 0)
     return uids
